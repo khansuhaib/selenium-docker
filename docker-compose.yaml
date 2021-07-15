@@ -1,0 +1,23 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:3.141
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome:3.141
+    shm_size: '1gb'
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  search-module:
+    image: khansuhaib/selenium-docker
+    depends_on:
+      - chrome
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=search-module.xml
+    volumes:
+      - ./search-result:/usr/local/share/udemy/test-output
