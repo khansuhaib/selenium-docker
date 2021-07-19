@@ -25,3 +25,4 @@ ADD healthcheck.sh                      healthcheck.sh
 # MODULE
 
 ENTRYPOINT sh healthcheck.sh
+CMD while true; do sleep 1000; done
