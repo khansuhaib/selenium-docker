@@ -5,7 +5,7 @@ RUN apk add bash
 RUN apk add curl jq
 
 # Workspace
-WORKDIR /usr/shar/udemy
+WORKDIR /usr/share/udemy
 
 # ADD .jar under target from host
 # into this image
