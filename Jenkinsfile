@@ -12,6 +12,7 @@ pipeline {
         stage('Build Jar') {
             steps {
                 sh 'mvn clean package -DskipTests'
+		    echo 'Run Tests 1'
 		sk 'healthcheck.sh'
             }
         }
