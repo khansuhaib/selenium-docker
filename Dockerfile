@@ -1,5 +1,7 @@
 FROM openjdk:8u191-jre-alpine3.8
-
+RUN apk update
+RUN apk upgrade
+RUN apk add bash
 RUN apk add curl jq
 
 # Workspace
