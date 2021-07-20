@@ -1,30 +1,33 @@
 pipeline {
-	environment {
-	   JAVA_TOOLS_OPTIONS = "-Duser.home=/var/maven"
-	}
-	agent {
-        docker {
-            image 'maven:3.6.0-jdk-13'
-            args '-v /temp/var/maven:/.m2 -e MAVEN_CONFIG=/var/maven/.m2'
-        }
-    }
+    agent none
     stages {
         stage('Build Jar') {
+            agent {
+                docker {
+                    image 'maven:3-alpine'
+                    args '-v $HOME/.m2:/root/.m2'
+                }
+            }
             steps {
                 sh 'mvn clean package -DskipTests'
-		    echo 'Run Tests 1'
-		sk 'healthcheck.sh'
             }
         }
-        stage('Run Tests') {
+        stage('Build Image') {
             steps {
-               echo 'Run Tests'
+                script {
+                	app = docker.build("khansuhaib/selenium-docker")
+                }
             }
         }
-    }
-    post {
-        always {
-            cleanWs()
+        stage('Push Image') {
+            steps {
+                script {
+			docker.withRegistry('https://registry.hub.docker.com', 'DockerID') {
+				app.push("${BUILD_NUMBER}")
+				app.push("latest")
+			}
+                }
+            }
         }
     }
 }
