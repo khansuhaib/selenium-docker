@@ -21,4 +21,4 @@ java -DHUB_HOST=$HUB_HOST -DBROWSER=$BROWSER org.testng.TestNG %projectLocation%
 java -cp /var/jenkins_home/workspace/JAVA_BUILD/target/selenium-docker.jar:/var/jenkins_home/workspace/JAVA_BUILD/target/selenium-docker-tests.jar:/var/jenkins_home/workspace/JAVA_BUILD/target/libs/* \
     -DHUB_HOST=$HUB_HOST \
     -DBROWSER=$BROWSER \
-    org.testng.TestNG $MODULE
+    /var/jenkins_home/workspace/JAVA_BUILD/target/org.testng.TestNG $MODULE
