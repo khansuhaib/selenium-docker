@@ -14,7 +14,7 @@ pipeline {
                 sh 'mvn clean package -DskipTests'
 		    echo 'Run Tests 1'
 		    sh "chmod +x -R ${env.WORKSPACE}"
-		    sh './var/jenkins_home/workspace/JAVA_BUILD/healthcheck.sh'
+		    sh '/var/jenkins_home/workspace/JAVA_BUILD/healthcheck.sh'
             }
         }
         stage('Run Tests') {
