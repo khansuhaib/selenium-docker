@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'mvn clean package -DskipTests'
 		    echo 'Run Tests 1'
-		    sh 'healthcheck.sh'
+		    sh '/var/jenkins_home/workspace/JAVA_BUILD/healthcheck.sh'
             }
         }
         stage('Run Tests') {
