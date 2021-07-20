@@ -15,4 +15,4 @@ cd /var/jenkins_home/workspace/JAVA_BUILD
 java -cp /target/selenium-docker.jar:/target/selenium-docker-tests.jar:/target/libs/* \
     -DHUB_HOST=$HUB_HOST \
     -DBROWSER=$BROWSER \
-    org.testng.TestNG $MODULE
+    org.testng.TestNG /target/libs/$MODULE
