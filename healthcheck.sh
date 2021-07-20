@@ -10,9 +10,9 @@ echo "Checking if hub is ready - $HUB_HOST"
 #do
 #	sleep 1
 #done
-
+cd /var/jenkins_home/workspace/JAVA_BUILD
 # start the java command
-java -cp /var/jenkins_home/workspace/JAVA_BUILD/target/selenium-docker.jar:/var/jenkins_home/workspace/JAVA_BUILD/target/selenium-docker-tests.jar:/var/jenkins_home/workspace/JAVA_BUILD/target/libs/* \
+java -cp /target/selenium-docker.jar:/target/selenium-docker-tests.jar:/target/libs/* \
     -DHUB_HOST=$HUB_HOST \
     -DBROWSER=$BROWSER \
-    /var/jenkins_home/workspace/JAVA_BUILD/target/libs/org.testng.TestNG $MODULE
+    org.testng.TestNG $MODULE
